@@ -28,3 +28,16 @@ spec:
 
   monitoring:
     enablePodMonitor: false
+
+  backup:
+    barmanObjectStore:
+      destinationPath: "https://revorageoassets.blob.core.windows.net/pg-backups"
+      azureCredentials:
+        connectionString:
+          name: azure-backup-creds
+          key: AZURE_STORAGE_CONNECTION_STRING
+      wal:
+        compression: gzip
+      data:
+        compression: gzip
+    retentionPolicy: "7d"
